@@ -21,7 +21,7 @@ function App() {
     const { items } = cart;
     const item = { ...product, amount: amount };
     const index = isProductExist(product.id);
-    if (index != -1) {
+    if (index !== -1) {
       items[index].amount += amount;
     } else {
       items.push(item);
@@ -36,10 +36,10 @@ function App() {
     }
     const index = isProductExist(id);
     let { items } = cart;
-    if (index == -1) return;
+    if (index === -1) return;
     items[index].amount += amount;
     if (items[index].amount <= 0) {
-      items = items.filter((_, currentIndex) => currentIndex != index);
+      items = items.filter((_, currentIndex) => currentIndex !== index);
     }
     const total = calcTotal(items);
     setCart({ ...cart, items: items, total });

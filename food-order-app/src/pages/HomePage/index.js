@@ -16,7 +16,8 @@ const HomePage = (props) => {
    useEffect(() => {
       setLoader(!loader);
       getMeals();
-   }, []);
+   }, [loader]);
+
    return (
       <>
          <HeroImage />
