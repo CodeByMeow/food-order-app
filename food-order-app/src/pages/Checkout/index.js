@@ -1,5 +1,5 @@
 import "./Checkout.css";
-import { Formik, useFormik } from "formik";
+import { useFormik } from "formik";
 import { CartItem } from "../../components";
 import { useCartContext } from "../../contexts/CartContext";
 const Checkout = () => {

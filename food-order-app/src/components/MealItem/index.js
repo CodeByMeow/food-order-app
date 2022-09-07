@@ -12,7 +12,7 @@ const MealItem = (props) => {
       <div className="meal-item">
          <div className="meal-item-info">
             <div className="meal-item-image">
-               <img src={image} />
+               <img src={image} alt={name} />
             </div>
             <div className="meal-item-desc">
                <h4>{name}</h4>
