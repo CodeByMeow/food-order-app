@@ -1,36 +1,54 @@
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Doughnut } from "react-chartjs-2";
-import "./Chart.css"
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
+import faker from "faker";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
-const config = {
-   data: {
-      labels: ["Red", "Blue", "Yellow"],
-      datasets: [
-         {
-            label: "# of Votes",
-            data: [300, 60, 100],
-            backgroundColor: [
-               "rgb(255, 99, 132 )",
-               "rgb(54, 162, 235 )",
-               "rgb(255, 206, 86 )",
-            ],
-            borderWidth: 1,
-            hoverOffset: 4,
-            borderRadius: 30,
-            spacing: 6,
-         },
-      ],
-   },
-   options: {
-      cutout: 95,
-   },
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: "top",
+    },
+    title: {
+      display: true,
+      text: "Chart.js Bar Chart",
+    },
+  },
+};
+
+const labels = ["January", "February", "March", "April", "May", "June", "July"];
+
+export const data = {
+  labels,
+  datasets: [
+    {
+      label: "Dataset 1",
+      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+      backgroundColor: "rgba(255, 99, 132, 0.5)",
+    },
+    {
+      label: "Dataset 2",
+      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+      backgroundColor: "rgba(53, 162, 235, 0.5)",
+    },
+  ],
 };
 export default function Chart() {
-   return (
-      <div className="container .d-flex .justify-center .align-center">
-         <div className="chart-inner">
-            <Doughnut {...config} />;
-         </div>
-      </div>)
+  return <Bar options={options} data={data} />;
 }
